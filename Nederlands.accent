@@ -1,0 +1,405 @@
+# Dutch pronounciation rules for translator.library V42
+# $VER: nederlands.accent 1.0 (24.3.97)
+#
+# By Hans Kruse <kruse@cs.utwente.nl>
+#
+#  distribution only through Aminet and Aminet CDs
+#
+#
+
+%class digit       0 1 2 3 4 5 6 7 8 9
+
+%class vowel    a e i o u y aa au ee ei eu ie ij oe oo ou ui uu
+%class svowel   a e i o u y
+%class cons     b c d f g h j k l m n p q r s t v w x z
+%class en       en er
+%class wspc     " " . ? ! , "\n" "\t"
+%class spc      " "
+%class persvnw  ik je
+% stress -3
+
+# FOLD "exceptions in words"
+(wspc+)[en](wspc+)=EH
+(wspc+)[een](wspc+)=UHN
+(wspc+)[een](wspc~)={1}
+(wspc+)[het](wspc+)=UHTT
+(wspc+)[u](wspc+)=UW0
+(wspc+)[alles](wspc+)=AAAX2LLUHS
+(wspc+)[eren](wspc+)=IY3RUHN
+[a.u.b.]={alstublieft}
+(digit+)[K](spc)=KAH#AX
+[geren] =GUHREHN
+
+
+(wspc+)(persvnw)(spc+)[beken](wspc+)=BUHKEHN
+(wspc+)[beken](spc+)(persvnw)(wspc+)=BUHKEHN
+
+# FEND
+# FOLD "normal way of speaking"
+# FOLD "e"
+(wspc+)(cons+)[e](cons+)(wspc+)=EH
+
+[en](wspc+)                    =UH2N
+(wspc+)[er](vowel~)            =EHR
+[er](vowel~)                   =UHR
+(wspc+)[er](cons)(vowel)       =IY3
+[er](en)(wspc+)                =UHR
+
+(wspc+)[be](cons)(en)(wspc+)   =BIY3
+(wspc+)[be](cons+)(cons)(en)   =BEH3
+(wspc+)[be](cons)(vowel)(wspc+)=BEY3
+(wspc+)[be](cons)(vowel)       =BUH
+
+(wspc+)[ge](cons)(en)(wspc+)   =/HGIY3
+(wspc+)[ge](cons+)(cons)(en)   =/HGEH3
+(wspc+)[ge](cons)(vowel)(wspc+)=/HGEY3
+(wspc+)[ge](cons)(vowel)       =/HGUH
+
+(cons+)[en](en)                =UH2N
+[e](cons)(cons+)               =EH
+[e](cons)(wspc+)               =EH
+(cons*)[e](cons)(svowel)       =EY3
+# FEND
+(cons+)[a](cons)(svowel)=AA
+(cons+)[u](cons)(svowel)=UH
+[a](wspc+)              ={aa}
+[o](wspc+)              ={oo}
+[d](wspc+)              =TT
+# FEND
+# FOLD "cons"
+[b]=B
+[c]=K
+[d]=DH
+[ff]=FF
+[f]=FF
+[g]=/HG
+[h]=/H
+[j]=Y
+[k]=K
+[l]=L
+[m]=M
+[n]=N
+[p]=P
+[q]=K
+[r]=R
+[s]=S
+[tt]=TT
+[t]=TT
+[v]=V
+[w]=W
+[x]=KSH
+[z]=Z
+# FEND
+# FOLD "vowels"
+[aa]=AA
+[au]=AWAX
+[ee]=EY
+[ie]=IY0
+[ij]=AY
+[oo]=OW
+[oe]=UW3
+[ou]=AW2
+
+# FEND
+# FOLD "svowel"
+[a]=AAAX2
+[e]=UH2
+[i]=IY
+[o]=AO
+[u]=UH
+[y]=IY
+# FEND
+
+
+# FOLD "numbers"
+# All numbers in the range [0..9999]
+
+(digit+)[0](digit*)$ = " "
+[0] = NUHLL
+
+# FOLD"thousends"
+
+[1000]$ =DUH2IYZHEHNT
+[90](digit)(digit) = {9 1000}
+[80](digit)(digit) = {8 1000}
+[70](digit)(digit) = {7 1000}
+[60](digit)(digit) = {6 1000}
+[50](digit)(digit) = {5 1000}
+[40](digit)(digit) = {4 1000}
+[30](digit)(digit) = {3 1000}
+[20](digit)(digit) = {2 1000}
+[10](digit)(digit) = {1000}
+# FEND
+
+[100]$ = /HOW/HNDHERT
+
+# FOLD "thousands in [9999..2001] except whole thousands"
+[99](digit)(digit)  = {9 & 90 100}
+[98](digit)(digit)  = {8 & 90 100}
+[97](digit)(digit)  = {7 & 90 100}
+[96](digit)(digit)  = {6 & 90 100}
+[95](digit)(digit)  = {5 & 90 100}
+[94](digit)(digit)  = {4 & 90 100}
+[93](digit)(digit)  = {3 & 90 100}
+[92](digit)(digit)  = {2 & 90 100}
+[91](digit)(digit)  = {1 & 90 100}
+
+[89](digit)(digit)  = {9 & 80 100}
+[88](digit)(digit)  = {8 & 80 100}
+[87](digit)(digit)  = {7 & 80 100}
+[86](digit)(digit)  = {6 & 80 100}
+[85](digit)(digit)  = {5 & 80 100}
+[84](digit)(digit)  = {4 & 80 100}
+[83](digit)(digit)  = {3 & 80 100}
+[82](digit)(digit)  = {2 & 80 100}
+[81](digit)(digit)  = {1 & 80 100}
+
+[79](digit)(digit)  = {9 & 70 100}
+[78](digit)(digit)  = {8 & 70 100}
+[77](digit)(digit)  = {7 & 70 100}
+[76](digit)(digit)  = {6 & 70 100}
+[75](digit)(digit)  = {5 & 70 100}
+[74](digit)(digit)  = {4 & 70 100}
+[73](digit)(digit)  = {3 & 70 100}
+[72](digit)(digit)  = {2 & 70 100}
+[71](digit)(digit)  = {1 & 70 100}
+
+[69](digit)(digit)  = {9 & 60 100}
+[68](digit)(digit)  = {8 & 60 100}
+[67](digit)(digit)  = {7 & 60 100}
+[66](digit)(digit)  = {6 & 60 100}
+[65](digit)(digit)  = {5 & 60 100}
+[64](digit)(digit)  = {4 & 60 100}
+[63](digit)(digit)  = {3 & 60 100}
+[62](digit)(digit)  = {2 & 60 100}
+[61](digit)(digit)  = {1 & 60 100}
+
+[59](digit)(digit)  = {9 & 50 100}
+[58](digit)(digit)  = {8 & 50 100}
+[57](digit)(digit)  = {7 & 50 100}
+[56](digit)(digit)  = {6 & 50 100}
+[55](digit)(digit)  = {5 & 50 100}
+[54](digit)(digit)  = {4 & 50 100}
+[53](digit)(digit)  = {3 & 50 100}
+[52](digit)(digit)  = {2 & 50 100}
+[51](digit)(digit)  = {1 & 50 100}
+
+[49](digit)(digit)  = {9 & 40 100}
+[48](digit)(digit)  = {8 & 40 100}
+[47](digit)(digit)  = {7 & 40 100}
+[46](digit)(digit)  = {6 & 40 100}
+[45](digit)(digit)  = {5 & 40 100}
+[44](digit)(digit)  = {4 & 40 100}
+[43](digit)(digit)  = {3 & 40 100}
+[42](digit)(digit)  = {2 & 40 100}
+[41](digit)(digit)  = {1 & 40 100}
+
+[39](digit)(digit)  = {9 & 30 100}
+[38](digit)(digit)  = {8 & 30 100}
+[37](digit)(digit)  = {7 & 30 100}
+[36](digit)(digit)  = {6 & 30 100}
+[35](digit)(digit)  = {5 & 30 100}
+[34](digit)(digit)  = {4 & 30 100}
+[33](digit)(digit)  = {3 & 30 100}
+[32](digit)(digit)  = {2 & 30 100}
+[31](digit)(digit)  = {1 & 30 100}
+
+[29](digit)(digit)  = {9 & 20 100}
+[28](digit)(digit)  = {8 & 20 100}
+[27](digit)(digit)  = {7 & 20 100}
+[26](digit)(digit)  = {6 & 20 100}
+[25](digit)(digit)  = {5 & 20 100}
+[24](digit)(digit)  = {4 & 20 100}
+[23](digit)(digit)  = {3 & 20 100}
+[22](digit)(digit)  = {2 & 20 100}
+[21](digit)(digit)  = {1 & 20 100}
+# FEND
+# FOLD "thousands below 2000"
+#I didn't put 100 to the below numbers because it's archaic to speak that way.
+# except when there are 2 0's
+
+[1900]              = {19 100}
+[19](digit)(digit)  = {19}
+[1800]              = {18 100}
+[18](digit)(digit)  = {18}
+[1700]              = {17 100}
+[17](digit)(digit)  = {17}
+[1600]              = {16 100}
+[16](digit)(digit)  = {16}
+[1500]              = {15 100}
+[15](digit)(digit)  = {15}
+[1400]              = {14 100}
+[14](digit)(digit)  = {14}
+[1300]              = {13 100}
+[13](digit)(digit)  = {13}
+[1200]              = {12 100}
+[12](digit)(digit)  = {12}
+[1100]              = {11 100}
+[11](digit)(digit)  = {11}
+# FEND
+# FOLD "hundreds below thousend"
+[9](digit)(digit)   = {9 100}
+[8](digit)(digit)   = {8 100}
+[7](digit)(digit)   = {7 100}
+[6](digit)(digit)   = {6 100}
+[5](digit)(digit)   = {5 100}
+[4](digit)(digit)   = {4 100}
+[3](digit)(digit)   = {3 100}
+[2](digit)(digit)   = {2 100}
+[1](digit)(digit)   = {100}
+# FEND
+# FOLD "nineties"
+
+[99] = {9 & 90}
+[98] = {8 & 90}
+[97] = {7 & 90}
+[96] = {6 & 90}
+[95] = {5 & 90}
+[94] = {4 & 90}
+[93] = {3 & 90}
+[92] = {2 & 90}
+[91] = {1 & 90}
+
+[90]  = NEYGIHNTTIH/H
+# FEND
+# FOLD "eighties"
+[89] = {9 & 80}
+[88] = {8 & 80}
+[87] = {7 & 80}
+[86] = {6 & 80}
+[85] = {5 & 80}
+[84] = {4 & 80}
+[83] = {3 & 80}
+[82] = {2 & 80}
+[81] = {1 & 80}
+
+[80]  = TTHAH/CGTHTIH/H
+# FEND
+# FOLD "seventies"
+[79] = {9 & 70}
+[78] = {8 & 70}
+[77] = {7 & 70}
+[76] = {6 & 70}
+[75] = {5 & 70}
+[74] = {4 & 70}
+[73] = {3 & 70}
+[72] = {2 & 70}
+[71] = {1 & 70}
+
+[70] = ZEYVIHNTTIH/H
+# FEND
+# FOLD "sixties"
+[69] = {9 & 60}
+[68] = {8 & 60}
+[67] = {7 & 60}
+[66] = {6 & 60}
+[65] = {5 & 60}
+[64] = {4 & 60}
+[63] = {3 & 60}
+[62] = {2 & 60}
+[61] = {1 & 60}
+
+[60] = ZEHSTTIH/H
+# FEND
+# FOLD"fifthies"
+[59] = {9 & 50}
+[58] = {8 & 50}
+[57] = {7 & 50}
+[56] = {6 & 50}
+[55] = {5 & 50}
+[54] = {4 & 50}
+[53] = {3 & 50}
+[52] = {2 & 50}
+[51] = {1 & 50}
+
+[50] = VAYFTTIH/H
+# FEND
+# FOLD "fourties"
+[49] = {9 & 40}
+[48] = {8 & 40}
+[47] = {7 & 40}
+[46] = {6 & 40}
+[45] = {5 & 40}
+[44] = {4 & 40}
+[43] = {3 & 40}
+[42] = {2 & 40}
+[41] = {1 & 40}
+
+[40] = VIHRTTIH/H
+# FEND
+# FOLD "thirties"
+[39] = {9 & 30}
+[38] = {8 & 30}
+[37] = {7 & 30}
+[36] = {6 & 30}
+[35] = {5 & 30}
+[34] = {4 & 30}
+[33] = {3 & 30}
+[32] = {2 & 30}
+[31] = {1 & 30}
+
+[30] = DHAERTTIH/H
+# FEND
+# FOLD "twenties"
+[29] = {9 & 20}
+[28] = {8 & 20}
+[27] = {7 & 20}
+[26] = {6 & 20}
+[25] = {5 & 20}
+[24] = {4 & 20}
+[23] = {3 & 20}
+[22] = {2 & 20}
+[21] = {1 & 20}
+
+[20] = TWIHNTIH/H
+# FEND
+# FOLD "teens"
+[19] = {9 10}
+[18] = {8 10}
+[17] = {7 10}
+[16] = {6 10}
+[15] = {5 10}
+[14] = VIHRTTIYN
+[13] = DIHRTTIYN
+[12] = TWAALUHF
+[11] = EHLUHF
+[10] = TIYN
+# FEND
+# FOLD "digits"
+[9]  = NEYGIHN
+[8]  = AH/CGTH
+[7]  = ZEYVIHN
+[6]  = ZEHS
+[5]  = VAYF
+[4]  = VIYR
+[3]  = DHRIY
+[2]  = TWHEY
+[1]  = EYN
+# FEND
+# FEND
+# FOLD "special symbols"
+
+[&]  = EHN
+[!]  = {?}
+[@]  = EHTT
+[ "\ " ] = " "
+[.]$ = .
+[.] = " "
+[%] = .
+[:] = ". "
+[;] = .
+[?] = "?"
+(digit)(spc*)[,](spc*)(digit)={ komma }
+[,]=" , "
+[ "\(" ] = ,
+[ "\)" ] = ,
+[\\] = " "
+[ "\[" ] = " "
+[{] = " "
+[}] = " "
+[_] = " "
+[`] = " "
+[ "]" ] = " "
+# FEND
+
+

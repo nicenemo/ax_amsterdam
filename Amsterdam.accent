@@ -1,0 +1,213 @@
+# Dutch pronounciation rules for translator.library V43
+# $VER: Amsterdam.accent 2.0 (9.7.97)
+#
+# This is an experimental dutch accent file, not a
+# a file with the accent of Amsterdam
+#
+#
+# A new richer version is under development
+#
+#
+#
+# By Hans Kruse <kruse@cs.utwente.nl>
+#
+#
+# You may use it spread it as long not as it's not altered.
+#
+# Please contact me if you think you made a better version, this for the sake of
+# consistency.
+#
+# known bugs: uu doesn't sound the the way it should sound, i'm working on it.
+#
+#
+
+%class Ñ        0 1 2 3 4 5 6 7 8 9
+%class Ç        0\. 1\. 2\. 3\. 4\. 5\. 6\. 7\. 8\. 9\. 0 1 2 3 4 5 6 7 8 9
+%class nul     0\. 0
+%class sep      " "
+
+%stress -2
+
+%emphasis 2
+
+
+%class klinker       a e i o u y aa au ee ei eu ie ij oe oo ou ui uu
+%class kklinker      a e i o u y
+%class medeklinker   b c d f g h j k l m n p q r s t v w x z
+%class dubbelklinker bb dd ff gg kk ll mm nn pp rr ss tt
+%class persvnw  ik je
+%class lidwoorden de een het
+%class wspc " " "'" "." ","
+%stress -2
+
+%emphasis 2
+
+# FOLD "Uitzonderingen"
+[het](wspc+) = "UHTT"
+[een](wspc+) = "UN"
+# FEND
+
+
+(medeklinker)[e](wspc+)      = "UH"
+(klinker)(medeklinker+)[en] = "UH"
+(klinker)(klinker)i[e](medeklinker) ="UH"
+
+# "klinkerverlenging"
+(klinker~)[a](medeklinker)(klinker) = {aa}
+(klinker~)[e](medeklinker)(klinker) = {ee}
+(klinker~)[o](medeklinker)(klinker) = {oo}
+(klinker~)[u](medeklinker)(klinker) = {uu}
+
+# FEND
+# FOLD "sch"
+[schr]  = "SR"
+[sch]~r = "SKZH/H"
+# FOLD "medeklinker"
+[b]=B
+[c]=K
+[d]=DH
+[ff]=FF
+[f]=FF
+[g]=KZH
+[h]=/H
+[j]=Y
+[k]=K
+[l]=L
+[m]=M
+[n]=N
+[p]=P
+[q]=K
+[r]=R
+[s]=S
+[tt]=TT
+[t]=T
+[v]=V
+[w]=W
+[x]=KSH
+[z]=Z
+# FEND
+# FOLD "klinker"
+[aa]=AA3
+[au]=AWAXQ
+[ee]=EY
+[ei]=EY
+[ie]=IY
+[ij]=AY
+[oo]=EHUW1
+[oe]=UW3
+[ou]=AW
+[ui] = UH1IY
+# probleem uu niet te doen
+[uu] = UH4
+# FEND
+# FOLD "kklinker"
+[a]=AA
+[e]=EH
+[i]=IY
+[o]=AO
+[u]=UH
+[y]=AY3
+# FEND
+
+# FOLD "nummers"
+\.(Ñ)(Ñ)(Ñ)[.] =
+[.](Ñ)(Ñ)(Ñ)\. =
+\,(Ñ)(Ñ)(Ñ)[\,] =
+[\,](Ñ)(Ñ)(Ñ)\, =
+(Ñ+)[\,](Ñ+) = " KAO3MMAA "
+
+\,(Ñ*)[0] = {0 }
+\,(Ñ*)[1] = {1 }
+\,(Ñ*)[2] = {2 }
+\,(Ñ*)[3] = {3 }
+\,(Ñ*)[4] = {4 }
+\,(Ñ*)[5] = {5 }
+\,(Ñ*)[6] = {6 }
+\,(Ñ*)[7] = {7 }
+\,(Ñ*)[8] = {8 }
+\,(Ñ*)[9] = {9 }
+
+
+[¶](Ñ)(Ñ)(Ç) (Ñ)(Ñ)(Ç) (Ñ)(Ñ)(Ç) (Ñ)(Ñ)(Ç) (Ñ)(Ñ)(Ñ) (Ñ~) = {&&&_ biljard }
+[¶](Ñ)(Ç) (Ñ)(Ñ)(Ç) (Ñ)(Ñ)(Ç) (Ñ)(Ñ)(Ç) (Ñ)(Ñ)(Ñ) (Ñ~) = {&&_ biljard }
+[¶](Ç) (Ñ)(Ñ)(Ç) (Ñ)(Ñ)(Ç) (Ñ)(Ñ)(Ç) (Ñ)(Ñ)(Ñ) (Ñ~) = {&_ biljard }
+
+[0]0(nul)(Ñ)(Ñ)(Ç) (Ñ)(Ñ)(Ç) (Ñ)(Ñ)(Ñ) (Ñ~) = {!!0}
+[¶](Ñ)(Ñ)(Ç) (Ñ)(Ñ)(Ç) (Ñ)(Ñ)(Ç) (Ñ)(Ñ)(Ñ) (Ñ~) = {&&&_ miljard }
+[¶](Ñ)(Ç) (Ñ)(Ñ)(Ç) (Ñ)(Ñ)(Ç) (Ñ)(Ñ)(Ñ) (Ñ~) = {&&_ miljard }
+[¶](Ç) (Ñ)(Ñ)(Ç) (Ñ)(Ñ)(Ç) (Ñ)(Ñ)(Ñ) (Ñ~) = {&_ miljard }
+
+[0]0(nul)(Ñ)(Ñ)(Ç) (Ñ)(Ñ)(Ñ) (Ñ~) = {!!0}
+[¶](Ñ)(Ñ)(Ç) (Ñ)(Ñ)(Ç) (Ñ)(Ñ)(Ñ) (Ñ~) = {&&&_ miljoen }
+[¶](Ñ)(Ç) (Ñ)(Ñ)(Ç) (Ñ)(Ñ)(Ñ) (Ñ~) = {&&_ miljoen }
+[¶](Ç) (Ñ)(Ñ)(Ç) (Ñ)(Ñ)(Ñ) (Ñ~) = {&_ duizend }
+
+[0]0(nul)(Ñ)(Ñ)(Ñ) (Ñ~) = {!!0}
+[¶](Ñ)(Ñ)(Ç) (Ñ)(Ñ)(Ñ) (Ñ~) = {&&&_ duizend }
+[¶](Ñ)(Ç) (Ñ)(Ñ)(Ñ) (Ñ~) = {&&_ duizend }
+[1] (Ñ)(Ñ)(Ñ) (Ñ~) = { duizend }
+[¶](Ç) (Ñ)(Ñ)(Ñ) (Ñ~) = {&_ duizend }
+
+[000] (Ñ~)        = { }
+[00](Ñ)(Ñ~)        = {en}
+[0](Ñ)(Ñ) (Ñ~)    = { }
+0[¶](Ñ)(Ñ) (Ñ~)   = { }
+[1](Ñ)(Ñ)         =
+#(Ñ)[00] (Ñ~)      = {honderd }
+(Ñ)[¶](Ñ)(Ñ) (Ñ~) = { honderd }
+
+# FOLD "tienplus"
+(Ñ~)[00]   (Ñ~) = {0 }
+[0](Ñ) (Ñ~) =
+[10] (Ñ~) = { tien }
+[11] (Ñ~) = "EHLFF "
+[12] (Ñ~) = { twaalf }
+[13] (Ñ~) = "DEHRTTIYN "
+[14] (Ñ~) = { veertien }
+[1](Ñ) (Ñ~) ={& 10}
+
+# FEND
+# FOLD tientallen
+
+[20] (Ñ~) = { twintig }
+[30] (Ñ~) = { dertig }
+[40] (Ñ~) = { veertig }
+[50] (Ñ~) = { 5tig }
+[60] (Ñ~) = { 6tig }
+[70] (Ñ~) = { 7tig }
+[80] (Ñ~) = { t8tig }
+[90] (Ñ~) = { 9tig }
+
+[2](Ñ) (Ñ~) = {& en  twintig }
+[3](Ñ) (Ñ~) = {& en  dertig }
+[4](Ñ) (Ñ~) = {& en  veertig }
+[5](Ñ) (Ñ~) = {& en  5tig }
+[6](Ñ) (Ñ~) = {& en  6tig }
+[7](Ñ) (Ñ~) = {& en  7tig }
+[8](Ñ) (Ñ~) = {& en  t8tig }
+[9](Ñ) (Ñ~) = {& en  9tig }
+
+
+# FEND
+# FOLD "cijfers"
+,(nul*)[0] = " NUHL "
+
+(Ñ~)[0](Ñ~) ="NUHL "
+[0] =
+[1]  = "EYN "
+[2]  = "TWHEY "
+[3]  = "DHRIY "
+[4]  = "VIYR "
+[5]  = "VAYF "
+[6]  = "ZEHS "
+[7]  = "ZEYVIHN "
+[8]  = "AAKZHT "
+[9]  = "NEYGIHN "
+# FEND
+# FEND
+[" "] =" "
+# FOLD "speciale symbolen"
+
+# FEND
+
+
